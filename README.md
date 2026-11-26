@@ -109,7 +109,8 @@ WHERE restaurant_price_tier = '$ Budget'
 GROUP BY estado_margen;
 ```
 
-Resultados del Diagnóstico SQL
+## *Resultados del Diagnóstico SQL*
+
 Culpable único de pérdidas (SQL 1 y 4): El 96.7% de las órdenes en pérdida (88 de 91) se concentran en Restaurantes $ Budget vendiendo por Online Delivery App. Se trata de micro-tickets subsidiados con venta bruta promedio de $3.60 USD (vs. $15.13 USD en órdenes rentables), un 19.8% de descuento promedio y un ratio de tarifa de entrega de 1.31 en distancias de 5.13 km, generando una pérdida neta promedio de -$0.17 USD por pedido.
 
 La tormenta perfecta operativa (SQL 2): Cuando coinciden Hora Pico + Tormenta (Heavy Rain / Storm), el índice de fricción se multiplica casi 9x (de 0.68 a 6.11), el tiempo total sube de 25.2 min a 39.7 min (+4.8 min en cocina y +9.7 min en reparto) y la calificación promedio cae por debajo del umbral crítico de 4 estrellas (3.90).
@@ -124,9 +125,13 @@ A partir del dataset enriquecido (delivery_clean_powerbi.csv), se construyó un 
 <img width="1113" height="636" alt="dashboard_pagina2_cuello_botella" src="https://github.com/user-attachments/assets/185139b8-b0a9-47b7-a0e0-c879c15f56f2" />
 
 
-1. Salud Financiera: Auditoría de Rentabilidad y Fugas de Margen
-2. Cuello de Botella Operativo: Tiempos de Preparación y Satisfacción
-💡 Recomendaciones Estratégicas Accionables
+### 1. Salud Financiera:
+Auditoría de Rentabilidad y Fugas de Margen
+### 2. Cuello de Botella Operativo: 
+Tiempos de Preparación y Satisfacción
+     
+## 💡 Recomendaciones Estratégicas Accionables
+
 Regla de Pedido Mínimo y Tope de Descuento: Establecer un monto mínimo de $8.00 – $10.00 USD en Online Delivery App para el segmento $ Budget y bloquear descuentos superiores al 15% en tickets menores a $12.00 USD. Impacto esperado: eliminación del 96.7% de las órdenes con margen negativo sin afectar el volumen rentable.
 
 Protocolo de Contingencia en Hora Pico y Mal Clima: Reforzar estaciones de cocina durante horas pico (donde la preparación sube invariablemente +5 min) y ajustar dinámicamente el radio de cobertura en delivery bajo condiciones de tormenta para proteger el SLA (< 35 min) y evitar el riesgo de abandono (Churn Risk).
